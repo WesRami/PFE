@@ -1,0 +1,155 @@
+.container {
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+  background-color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  background-color: transparent;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.stat-card .card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.stat-card .card-text {
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.trend-indicator {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}
+
+/* Spinner CSS */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Quick Actions */
+.quick-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #495057;
+  transition: transform 0.2s ease;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.quick-action-btn:hover {
+  transform: translateY(-3px);
+  background-color: #f8f9fa;
+}
+
+.action-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.bg-success {
+  background-color: #28a745;
+}
+
+.bg-warning {
+  background-color: #ffc107;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card, .stat-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn-primary {
+    padding: 0.65rem;
+  }
+  
+  .stat-card .card-text {
+    font-size: 2rem;
+  }
+  
+  .action-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .quick-action-btn span {
+    font-size: 0.85rem;
+  }
+}

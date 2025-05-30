@@ -1,0 +1,61 @@
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-page {
+  background-image: url('../../assets/background.jpg'); /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the entire screen */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  backdrop-filter: blur(2px); /* Keeps the blur effect */
+  height: 100vh;
+  width :100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent background for readability */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+}
+
+.btn-primary {
+  background-color: #6f42c1;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #5936a7;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.form-control:focus {
+  border-color: #6f42c1;
+  box-shadow: 0 0 8px rgba(111, 66, 193, 0.4);
+}
+
+.invalid-feedback {
+  font-size: 0.9em;
+}

@@ -1,0 +1,93 @@
+<div class="container mt-5">
+  <h2>Gestion des Collaborateurs</h2>
+  
+  <!-- Formulaire pour ajouter/éditer un collaborateur -->
+  <div *ngIf="isFormVisible" class="card p-4 mb-4">
+    <h3>{{ isEditing ? 'Modifier un Collaborateur' : 'Ajouter un Collaborateur' }}</h3>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="firstname" class="form-label">Prénom</label>
+          <input type="text" class="form-control" id="firstname" formControlName="firstname" required>
+        </div>
+        <div class="col-md-6">
+          <label for="lastname" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="lastname" formControlName="lastname" required>
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" required>
+        </div>
+        <div class="col-md-6" *ngIf="!isEditing && showPasswordField">
+          <label for="password" class="form-label">Mot de passe</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <div class="col-md-6">
+          <label for="role" class="form-label">Rôle</label>
+          <select class="form-control" id="role" formControlName="role" required>
+            <option value="Collaborateur">Collaborateur</option>
+            <option value="Administrateur">Administrateur</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="job" class="form-label">Métier</label>
+          <input type="text" class="form-control" id="job" formControlName="job">
+        </div>
+        <div class="col-md-6">
+          <label for="birthday" class="form-label">Date de naissance</label>
+          <input type="date" class="form-control" id="birthday" formControlName="birthday">
+        </div>
+        <div class="col-md-6">
+          <label for="number" class="form-label">Numéro de téléphone</label>
+          <input type="text" class="form-control" id="number" formControlName="number">
+        </div>
+        <div class="col-md-6">
+          <label for="image" class="form-label">URL de l’image</label>
+          <input type="text" class="form-control" id="image" formControlName="image">
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary me-2" [disabled]="isLoading">
+          {{ isEditing ? 'Modifier' : 'Ajouter' }}
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="resetForm()" [disabled]="isLoading">Annuler</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Liste des collaborateurs -->
+  <div class="card p-4">
+    <h3>Liste des Collaborateurs</h3>
+    <div *ngIf="isLoading" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+    <table class="table table-striped" *ngIf="!isLoading && users.length">
+      <thead>
+        <tr>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Rôle</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-2" (click)="editUser(user)">Modifier</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="!isLoading && !users.length" class="alert alert-info">
+      Aucun collaborateur trouvé.
+    </div>
+  </div>
+</div>

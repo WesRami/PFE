@@ -1,0 +1,90 @@
+<div class="container py-3">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="animate__animated animate__fadeIn">Tableau de Bord Admin</h2>
+    <button class="btn btn-outline-primary" (click)="refreshStats()">
+      <i class="fas fa-sync-alt"></i> Actualiser
+    </button>
+  </div>
+  
+  <!-- Spinner -->
+  <div class="spinner-overlay" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p class="text-white">Chargement des données...</p>
+  </div>
+  
+  <!-- Section Statistiques -->
+  <div class="row mb-4 animate__animated" [ngClass]="{'animate__fadeIn': isStatsVisible}">
+    <div class="col-md-6 mb-4">
+      <div class="card stat-card shadow-sm text-center">
+        <div class="card-body">
+          <i class="fas fa-users fa-3x text-primary mb-3"></i>
+          <h5 class="card-title">Nombre de Collaborateurs</h5>
+          <p class="card-text display-4">{{ stats.collaboratorCount }}</p>
+          <div class="trend-indicator text-success">
+            <i class="fas fa-arrow-up"></i>
+            <span>{{ calculateGrowth(monthlyStats.currentMonth.users, monthlyStats.previousMonth.users) }}% ce mois</span>
+          </div>
+          <a routerLink="/collaborators" class="btn btn-primary mt-3">Gérer les Collaborateurs</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+      <div class="card stat-card shadow-sm text-center">
+        <div class="card-body">
+          <i class="fas fa-sign-in-alt fa-3x text-primary mb-3"></i>
+          <h5 class="card-title">Utilisateurs Actifs</h5>
+         <!-- <p class="card-text display-4">{{ stats.activeUsers }}</p>-->
+          <div class="trend-indicator text-success">
+            <i class="fas fa-arrow-up"></i>
+            <span>{{ calculateGrowth(monthlyStats.currentMonth.logins, monthlyStats.previousMonth.logins) }}% ce mois</span>
+          </div>
+          <button class="btn btn-primary mt-3" (click)="showActivityInfo()">Voir l'Activité</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Section Graphique -->
+  <div class="row mb-4 animate__animated animate__fadeIn">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">Statistiques Mensuelles</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="statsChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Section Actions Rapides -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">Actions Rapides</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 col-6 mb-3 mb-md-0" *ngFor="let action of quickActions">
+              <a *ngIf="action.action" (click)="handleQuickAction(action.action)" class="quick-action-btn">
+                <div class="action-icon bg-{{ action.color }}">
+                  <i class="fas {{ action.icon }}"></i>
+                </div>
+                <span>{{ action.name }}</span>
+              </a>
+              <a *ngIf="!action.action" [routerLink]="action.route" class="quick-action-btn">
+                <div class="action-icon bg-{{ action.color }}">
+                  <i class="fas {{ action.icon }}"></i>
+                </div>
+                <span>{{ action.name }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

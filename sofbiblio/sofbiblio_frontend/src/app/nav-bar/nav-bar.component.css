@@ -1,0 +1,48 @@
+.navbar {
+  border-radius: 8px;
+}
+
+.navbar-brand {
+  font-weight: 500;
+  color: #007bff;
+}
+
+.navbar-brand:hover {
+  color: #0056b3;
+}
+
+.nav-link {
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link:hover {
+  transform: scale(1.02);
+}
+
+.btn-outline-primary {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-outline-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .nav-link {
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,0 +1,2 @@
+C:/Users/rwesleti/version finale soutenance technique/sofbiblio/app/android/app/.cxx/Debug/5p2yj536/x86/CMakeFiles/edit_cache.dir
+C:/Users/rwesleti/version finale soutenance technique/sofbiblio/app/android/app/.cxx/Debug/5p2yj536/x86/CMakeFiles/rebuild_cache.dir
